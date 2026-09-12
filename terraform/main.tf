@@ -75,7 +75,7 @@ resource "google_storage_bucket_iam_member" "raw_landing_writer" {
 	bucket = google_storage_bucket.d0_raw_landing.name
 	role   = "roles/storage.objectCreator"
 	member = "user:${var.data_engineer_group}" # Linking personal email for testing
-	#member = "group:${var.data_engineer_group}" # For linking Google Group
+	#member = "group:${var.data_engineer_group}" # For linking Google Group in production
 
 	condition {
 		title       = "restrict-to-incoming-prefix"
@@ -213,6 +213,7 @@ resource "google_bigquery_row_access_policy" "student_onboarding_region_rls" {
 		EOT
 
 	grantees = [
-		"group:${var.analytics_reader_group}",
+		"user:${var.analytics_reader_group}", # Linking personal email for testing
+		#"group:${var.analytics_reader_group}", # Linking Google Group email for production
 	]
 }
