@@ -1,10 +1,9 @@
 name: Poka-Yoke Build Gate
 
 # Fail-Closed philosophy: the default state of this pipeline is BLOCKED.
-# Every job below must explicitly PASS for the gate to open. Any lint
-# failure, formatting violation, or detected secret halts the run
-# immediately (fail-fast) and the offending artifact is quarantined
-# rather than deployed or merged.
+# Every job below must explicitly PASS for the gate to open.
+# Any lint failure, formatting violation, or detected secret halts the run immediately (fail-fast)
+# and the offending artifact is quarantined rather than deployed or merged.
 
 on:
   pull_request:
@@ -20,9 +19,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # ---------------------------------------------------------------
+  #================================================================#
   # JOB 1: Static formatting + lint gate (Python / Django backend)
-  # ---------------------------------------------------------------
+  #================================================================#
   lint-and-format:
     name: Lint & Format Gate
     runs-on: ubuntu-latest
@@ -47,9 +46,9 @@ jobs:
       - name: Lint (flake8)
         run: flake8 . --max-line-length=100 --exclude=migrations,venv
 
-  # ---------------------------------------------------------------
+  #===============================================================#
   # JOB 2: Secret-scan gate -- blocks on ANY hardcoded credential
-  # ---------------------------------------------------------------
+  #===============================================================#
   secret-scan:
     name: Hardcoded Secret Gate
     runs-on: ubuntu-latest
@@ -66,9 +65,9 @@ jobs:
         # gitleaks-action exits non-zero on any finding, which fails this
         # job and therefore blocks the "deploy-gate" job below via `needs:`.
 
-  # ---------------------------------------------------------------
+  #========================================#
   # JOB 3: Django-specific security checks
-  # ---------------------------------------------------------------
+  #========================================#
   django-security-check:
     name: Django Security Gate
     runs-on: ubuntu-latest
@@ -96,12 +95,11 @@ jobs:
           DATABASE_URL: sqlite:///ci.db
         run: python manage.py check --deploy --fail-level WARNING
 
-  # ---------------------------------------------------------------
+  #====================================================================#
   # JOB 4: Deploy gate -- ONLY runs if every prior job passed.
-  # This is the actual "Fail-Closed" mechanism: absence of an
-  # explicit upstream PASS is treated as FAIL, never as "skip and
-  # proceed."
-  # ---------------------------------------------------------------
+  # This is the actual "Fail-Closed" mechanism: absence of an explicit
+  # upstream PASS is treated as FAIL, never as "skip and proceed."
+  #====================================================================#
   deploy-gate:
     name: Fail-Closed Deploy Gate
     runs-on: ubuntu-latest
@@ -137,9 +135,9 @@ jobs:
           name: quarantine-record-${{ github.sha }}
           path: quarantine/reason.txt
 
-  # ---------------------------------------------------------------
+  #===========================================================#
   # JOB 5: Deploy -- only reachable if deploy-gate succeeded.
-  # ---------------------------------------------------------------
+  #===========================================================#
   deploy-staging:
     name: Deploy to Staging (GCP App Engine)
     runs-on: ubuntu-latest
