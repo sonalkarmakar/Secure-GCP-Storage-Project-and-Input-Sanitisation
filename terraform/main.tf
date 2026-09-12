@@ -149,7 +149,8 @@ resource "google_bigquery_dataset" "d1_staged_enforced" {
 
 	access {
 		role           = "READER"
-		group_by_email = var.analytics_reader_group
+		user_by_email = var.analytics_reader_group # Linking personal email for testing
+		#group_by_email = var.analytics_reader_group # Linking Google Group email for production
 	}
 }
 
