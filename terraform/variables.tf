@@ -1,3 +1,9 @@
+variable "destroy_all_resources" {
+	description = "Boolean flag to determine if all resources should be cleanly destroyed. Useful in reducing costs for testing."
+	type        = bool
+	default     = true
+}
+
 variable "project_id" {
 	description = "GCP project ID where staging resources are provisioned."
 	type        = string
