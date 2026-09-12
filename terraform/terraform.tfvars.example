@@ -1,0 +1,5 @@
+project_id              = "my_project-27bb2b63-3d8b-4c13-9b8"
+data_engineer_group     = "sonal02@gmail.com"
+destroy_all_resources   = true
+analytics_reader_group  = "sonal02@gmail.com"
+raw_landing_bucket_name = "sonal_12sep2026_1700"
