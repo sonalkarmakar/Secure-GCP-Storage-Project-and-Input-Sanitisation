@@ -25,7 +25,7 @@ resource "google_storage_bucket" "d0_raw_landing" {
 	location                    = var.region
 	storage_class               = "STANDARD"
 	uniform_bucket_level_access = true # disables legacy ACLs; IAM is the single source of truth
-	force_destroy               = false
+	force_destroy               = true # Change to 'false' for production deployment
 
 	versioning {
 		enabled = true # protects against accidental overwrite/delete of raw evidence
@@ -127,7 +127,7 @@ resource "google_bigquery_dataset" "d1_staged_enforced" {
 	friendly_name              = "D1 Staged Enforced"
 	description                = "Schema-enforced, RLS-protected staging layer. Populated only via the validated pipeline; never written to manually."
 	location                   = var.region
-	delete_contents_on_destroy = false
+	delete_contents_on_destroy = true # Change to 'false' for production deployment
 
 	default_table_expiration_ms = null # staged data is durable, not transient
 
@@ -158,7 +158,7 @@ resource "google_bigquery_table" "student_onboarding" {
 	project             = var.project_id
 	dataset_id          = google_bigquery_dataset.d1_staged_enforced.dataset_id
 	table_id            = "student_onboarding"
-	deletion_protection = true
+	deletion_protection = false # Change to 'true' for production deployment
 
 	schema = jsonencode([
 		{ name = "record_id", type = "STRING", mode = "REQUIRED" },
@@ -189,7 +189,7 @@ resource "google_bigquery_table" "analyst_region_map" {
 	project             = var.project_id
 	dataset_id          = google_bigquery_dataset.d1_staged_enforced.dataset_id
 	table_id            = "analyst_region_map"
-	deletion_protection = true
+	deletion_protection = false # Change to 'true' for production deployment
 
 	schema = jsonencode([
 		{ name = "analyst_email", type = "STRING", mode = "REQUIRED" },
