@@ -202,7 +202,7 @@ resource "google_bigquery_row_access_policy" "student_onboarding_region_rls" {
 	project      = var.project_id
 	dataset_id   = google_bigquery_dataset.d1_staged_enforced.dataset_id
 	table_id     = google_bigquery_table.student_onboarding.table_id
-	row_access_policy_id = "region_scoped_access"
+	policy_id    = "region_scoped_access"
 
 	#filter_predicate = "region_code IN (SELECT region_code FROM `${var.project_id}.${var.bq_dataset_id}.analyst_region_map` WHERE analyst_email = SESSION_USER())"
 	filter_predicate = <<-EOT
