@@ -16,10 +16,9 @@ pipeline can validate-then-stream without a second translation layer.
 import re
 import uuid
 
+from dcyn import NO, YES, DCYNValidationError, to_boolean
 from django.core.validators import RegexValidator
 from rest_framework import serializers
-
-from .dcyn import NO, YES, DCYNValidationError, to_boolean
 
 # Region codes are a closed, enumerated set, not free text.
 # This is the same "no placeholders, no slang" discipline applied to the data model.
