@@ -72,6 +72,9 @@ jobs:
   django-security-check:
     name: Django Security Gate
     runs-on: ubuntu-latest
+    defaults:
+          run:
+            working-directory: django_app
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
