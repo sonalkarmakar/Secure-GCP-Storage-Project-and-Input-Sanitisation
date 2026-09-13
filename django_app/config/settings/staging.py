@@ -1,5 +1,5 @@
 # django_app/config/settings/staging.py
-from .base import *  # noqa: F401,F403
+from .base import *  # noqa: F401,F403,F405
 
 DEBUG = False
 
