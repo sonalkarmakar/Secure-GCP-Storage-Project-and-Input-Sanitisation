@@ -1,3 +1,9 @@
+#################################
+# Sonal Karmakar                #
+# sonalkarmakar00@gmail.com     #
+# sonal.karmakar@protonmail.com #
+#################################
+
 name: Poka-Yoke Build Gate
 
 # Fail-Closed philosophy: the default state of this pipeline is BLOCKED.

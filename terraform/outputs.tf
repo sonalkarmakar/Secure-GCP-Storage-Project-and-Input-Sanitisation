@@ -1,3 +1,9 @@
+#################################
+# Sonal Karmakar                #
+# sonalkarmakar00@gmail.com     #
+# sonal.karmakar@protonmail.com #
+#################################
+
 output "raw_landing_bucket_url" {
 	description = "gsutil URI of the D0 raw landing bucket."
 	value       = google_storage_bucket.d0_raw_landing.url

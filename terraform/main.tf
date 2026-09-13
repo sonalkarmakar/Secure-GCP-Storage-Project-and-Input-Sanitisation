@@ -1,3 +1,9 @@
+#################################
+# Sonal Karmakar                #
+# sonalkarmakar00@gmail.com     #
+# sonal.karmakar@protonmail.com #
+#################################
+
 terraform {
 	required_version = ">= 1.5.0"
 	required_providers {

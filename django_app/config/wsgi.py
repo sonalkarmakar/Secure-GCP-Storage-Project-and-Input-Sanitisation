@@ -1,3 +1,9 @@
+#################################
+# Sonal Karmakar                #
+# sonalkarmakar00@gmail.com     #
+# sonal.karmakar@protonmail.com #
+#################################
+
 # django_app/config/wsgi.py
 import os
 

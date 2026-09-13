@@ -1,3 +1,9 @@
+#################################
+# Sonal Karmakar                #
+# sonalkarmakar00@gmail.com     #
+# sonal.karmakar@protonmail.com #
+#################################
+
 variable "destroy_all_resources" {
 	description = "Boolean flag to determine if all resources should be cleanly destroyed. Useful in reducing costs for testing."
 	type        = bool
