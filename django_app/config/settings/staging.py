@@ -1,9 +1,9 @@
 # django_app/config/settings/staging.py
-from .base import *  # noqa: F401,F403,F405
+from .base import *  # noqa: F401,F403
 
 DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")  # noqa: F405
 
 # Settings that `manage.py check --deploy` validates
 SECURE_SSL_REDIRECT = True
