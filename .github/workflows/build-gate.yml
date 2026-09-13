@@ -62,6 +62,7 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITLEAKS_ENABLE_COMMENTS: "true"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # gitleaks-action exits non-zero on any finding, which fails this
         # job and therefore blocks the "deploy-gate" job below via `needs:`.
 
