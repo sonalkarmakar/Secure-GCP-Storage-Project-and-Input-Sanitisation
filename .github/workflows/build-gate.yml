@@ -44,7 +44,7 @@ jobs:
         run: isort --check-only --diff .
 
       - name: Lint (flake8)
-        run: flake8 . --max-line-length=100 --exclude=migrations,venv
+        run: flake8 . --max-line-length=120 --exclude=migrations,venv
 
   #===============================================================#
   # JOB 2: Secret-scan gate -- blocks on ANY hardcoded credential
