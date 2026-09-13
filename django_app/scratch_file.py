@@ -3,5 +3,5 @@ import sys
 
 
 def properly_formatted(x, y):
-	print(f"Python version is {sys.version}")
-	return x + y
+    print(f"Python version is {sys.version}")
+    return x + y
