@@ -1,3 +1,0 @@
-# requirements.txt
-Django==5.1.4
-djangorestframework==3.15.2
