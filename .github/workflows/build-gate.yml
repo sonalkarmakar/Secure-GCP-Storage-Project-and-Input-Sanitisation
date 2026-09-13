@@ -95,7 +95,7 @@ jobs:
       - name: Django deployment check (manage.py check --deploy)
         env:
           DJANGO_SETTINGS_MODULE: config.settings.staging
-          SECRET_KEY: ci-placeholder-not-a-real-secret
+          SECRET_KEY: this-is-a-suffici3ntly-long-plac3holder-key-and-not-4-real-k3y
           DATABASE_URL: sqlite:///ci.db
         run: python manage.py check --deploy --fail-level WARNING
 
