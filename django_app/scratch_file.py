@@ -2,5 +2,6 @@
 import sys
 
 
-def badly_formatted(x, y):
-    return x + y
+def properly_formatted(x, y):
+	print(f"Python version is {sys.version}")
+	return x + y
