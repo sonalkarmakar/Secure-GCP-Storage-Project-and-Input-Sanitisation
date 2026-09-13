@@ -2,5 +2,5 @@
 import sys
 
 
-def badly_formatted( x,y ):
-	return x+y
+def badly_formatted(x, y):
+    return x + y
